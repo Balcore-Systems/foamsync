@@ -1,0 +1,33 @@
+# OS junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# Editor
+.vscode/
+.idea/
+
+# Local working notes
+TODO.md
+.notes/
+NOTES.md
+
+# Never publish credentials / environment files
+*.key
+*.pem
+*.env
+*.env.*
+secrets/
+
+# Never commit build artifacts / binaries — the installer ships as a
+# GitHub *Release asset*, never as a file in the repo (keeps the repo
+# light and avoids ever publishing a build by accident).
+*.exe
+*.msi
+*.zip
+*.7z
+*.dat
+dist/
+Output/
+build/
+.pyarmor/

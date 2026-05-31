@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Activation, billing, urgent support
+    url: https://t.me/FoamSync_bot
+    about: For activation, billing, and time-sensitive issues, use the Telegram bot.
+  - name: Operator manual
+    url: https://foamsyncstudio.com/docs/
+    about: Setup, calibration, generators, CAM, troubleshooting.
+  - name: Pricing
+    url: https://foamsyncstudio.com/pricing/
+    about: Tier matrix and current prices.
