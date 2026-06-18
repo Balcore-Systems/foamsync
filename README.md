@@ -12,6 +12,7 @@
 
 [**Download**](../../releases/latest) · [**Website**](https://foamsyncstudio.com) · [**Docs**](docs/introduction.md) · [**FAQ**](docs/faq.md)
 
+<img src="assets/hero.webp" alt="FoamSync" width="100%">
 </div>
 
 ---
