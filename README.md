@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="assets/hero.webp" alt="FoamSync" width="100%">
-
 # FoamSync
 
 ### Production 4-axis CAM for hot-wire EPS foam cutting
