@@ -1,174 +1,100 @@
+<div align="center">
+
+<img src="assets/hero.webp" alt="FoamSync" width="100%">
+
 # FoamSync
 
-CAM software for 4-axis hot-wire CNC foam cutters. Built by
-[Balcore Systems](https://foamsyncstudio.com), Frankfurt am Main.
+### Production 4-axis CAM for hot-wire EPS foam cutting
 
-[Website](https://foamsyncstudio.com)
-&nbsp;·&nbsp;
-[Download](https://foamsyncstudio.com/download/)
-&nbsp;·&nbsp;
-[Buy](https://t.me/FoamSync_bot)
-&nbsp;·&nbsp;
-[Manual](https://foamsyncstudio.com/docs/)
+**From sketch to clean G-code in one tool — generate the shape, nest it automatically, cut it precisely.**
 
-<p align="center">
-  <img src="assets/hero.webp" alt="FoamSync — 4-axis wing toolpath preview" width="900">
-</p>
+[![Latest release](https://img.shields.io/github/v/release/Balcore-Systems/foamsync?label=download&sort=semver)](../../releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)](docs/installation.md)
+[![Website](https://img.shields.io/badge/web-foamsyncstudio.com-orange)](https://foamsyncstudio.com)
+
+[**Download**](../../releases/latest) · [**Website**](https://foamsyncstudio.com) · [**Docs**](docs/introduction.md) · [**FAQ**](docs/faq.md)
+
+</div>
 
 ---
 
-## Overview
+## What is FoamSync?
 
-FoamSync lets a single operator run a 4-axis hot-wire foam-cutting
-shop without an engineering office, a CAM specialist, or an IT
-department. Domes, vaults, rounded buildings, NACA wings, pipe
-shells, thermal panels — and anything you can draw as an SVG — are
-parametric input on one side and a finished G-code program running on
-the machine on the other, all in the same window.
+FoamSync turns a hot-wire foam cutter into a precision production tool. Instead of hand-drawing every profile and fighting with raw G-code, you **generate the shape parametrically**, let the **cut-safe nester** pack it into your stock, and send a clean, **kerf-compensated 4-axis toolpath** to the machine — or simulate the whole job first on the built-in **virtual machine**.
 
-The product is built for production-floor operators across a wide
-range of work: architectural foam (domes, vaults, walls, openings),
-aerospace/RC (NACA wings with spar slots, tapered profiles),
-industrial insulation (pipe shells, thermal panels with mounting
-channels), and custom shapes from SVG. It controls the machine
-directly — no separate sender, no export round-trip between tools.
+Built for the shops that cut EPS / XPS / PU every day: architectural décor, RC and aero foam cores, and thermal insulation.
 
-## What it includes
+> The point is time. A parametric generator collapses the hours normally spent preparing and converting profiles down to minutes — so the work shifts back to where it belongs: actually cutting parts.
 
-- Parametric generators: domes, vaults, building-block walls, NACA-4
-  airfoils with spar slots, pipe shells, and thermal panels.
-- 4-axis G-code post-processor with synced X/Y on one tower and
-  independent U/V on the other.
-- Auto-nesting that operates on the union of top and bottom contours
-  (so tilted 4-axis sweeps pack correctly), with cluster strategies
-  per generator family.
-- Collision check and a pre-cut wire-safety validation pass.
-- In-window machine control: 4-axis DRO with optional 5th rotational
-  axis, on-screen jog, emergency stop, quick actions (zero / retract /
-  park / heater), live feed override.
-- Heater control: external, board PWM, or board PID.
-- Material library with kerf, feed, and temperature presets that
-  calibrate to the actual foam batch.
-- SVG import for arbitrary 2D profiles.
-- Diagnostic export the operator can send to support.
-- Controller auto-detect for Marlin, GRBL, and GRBL-H-Par.
-- **Virtual machine (Virtual GRBL)** — a built-in, behaving virtual
-  4-axis cutter that runs the full workflow with no hardware connected.
+## Highlights
 
-## What sets it apart
+- ⚙️ **Parametric generators** — domes, vaults, walls, cornices, NACA airfoils, pipe shells, thermal panels. Minutes, not hours.
+- 🪛 **4-axis cutting** (with 5th rotary-axis support) — independent X/Y and U/V towers for tapered and twisted parts.
+- 🧩 **Auto-nesting** — collision-aware packing across every generator, with continuous, clean cut paths.
+- 🖥️ **Virtual machine** — preview and validate the full cut before touching real foam.
+- 🎛️ **Real-machine control** — live DRO, jog, heater control (PWM / PID), one-tap wire-zero.
+- 🪶 **Cut quality built in** — per-material calibrated feed and curvature-adaptive corner slowdown.
+- ✏️ **Freehand Grid editor** — draw any custom contour (snap grid, curved edges, holes, trace-over-image) and save it to your own library.
+- 📐 **SVG / DXF import** — bring in profiles you already have.
 
-The hot-wire CAM landscape is typically a patchwork of separate tools
-— a CAD modeller, a CAM that doesn't really know about hot wire, a
-post-processor, and a machine sender — and most shops need at least a
-part-time CAD/CAM specialist to keep that pipeline running. FoamSync
-collapses the pipeline into one window and replaces the modelling
-step with parameter forms, so the operator on the floor can produce
-the part without a back-office.
+## Generators
 
-- **Virtual machine (Virtual GRBL) — design and verify before any
-  hardware.** Select the virtual driver instead of a COM port and the
-  whole app behaves as if a real 4-axis cutter is connected: it homes,
-  jogs with smooth motion, runs the full G-code job with the wire
-  animating along the real path, honours live feed override, simulates
-  the heater, and runs the wire-safety pass — with no machine attached.
-  Most hot-wire CAM offers at most a static toolpath preview; this is a
-  behaving machine. Evaluate the product, build a part library, and
-  train operators before the cutter is even on the floor. See
-  [docs/virtual-machine.md](docs/virtual-machine.md).
-- **Single-window workflow.** From drawing or parametric input to a
-  running G-code program, with the machine connected, in one window.
-- **Architectural generators included.** Domes (radial, with solid /
-  oculus / no top-cap), barrel vaults, and building-block walls with
-  rounded openings — first-class, not retrofitted.
-- **4-axis as a primary mode.** Independent X/Y vs U/V tower motion is
-  the default model, not a post-processor afterthought; tapered wings
-  and tilted sweeps are normal output.
-- **Pre-cut wire-safety pass.** Before every cut, the path is checked
-  against the machine's wire lean limit with explicit warning /
-  danger / critical thresholds and diagnostics.
-- **Built-in heater control.** Pick external, board PWM, or board
-  PID per machine.
-- **Material library that calibrates to your batch.** Kerf, feed, and
-  temperature are stored per material grade and adjusted from a small
-  reference cut so the next run starts from real behaviour.
-- **Nesting that understands 4-axis sweeps.** The packer uses the
-  union of top and bottom profiles, and shelves BUILD parts in stacked
-  rows; pipe shells use a pair-interlock pattern that fits two
-  half-shells into one full circle's footprint.
-- **One-tap wire-zero.** Set the wire origin from the current position
-  in one click.
-- **Multi-firmware auto-detect.** Marlin, GRBL, and GRBL-H-Par
-  controllers are recognised on connect.
+### 🏛 BUILD — architectural
+Dome (radial / oculus / top-cap), Vault (custom span & height), building-block walls with rounded-corner openings, and a Cornice generator for decorative moulding profiles.
 
-## Screenshots
+<img src="assets/screen-dome.webp" alt="Dome generator" width="100%">
 
-<p align="center">
-  <img src="assets/screen-dome.webp" alt="Parametric dome generator" width="300">
-  <img src="assets/screen-naca.webp" alt="NACA airfoil generator" width="300">
-  <img src="assets/screen-thermal.webp" alt="Thermal panel nesting" width="300">
-</p>
+### ✈️ AERO — 4-axis airfoils
+NACA-4 airfoil (any chord / thickness), spar-slot cut-outs with bridge support, 4-axis tilted cuts, and cylindrical or tapered wings with independent **root + tip** profiles.
 
-More on the [website gallery](https://foamsyncstudio.com/#in-action).
+<img src="assets/screen-naca.webp" alt="NACA airfoil generator" width="100%">
 
-## Tiers and packs
+### 🔥 THERMAL — insulation
+Pipe-shell unfolder for cylindrical jackets, and a thermal-panel stack-nester.
 
-Three tiers (Lite, Pro, Studio) and three Pro Packs you mix on Pro
-(BUILD, AERO, THERMAL). The CAM core ships with every tier; packs add
-parametric generators. Full feature matrix and current prices on the
-[pricing page](https://foamsyncstudio.com/pricing/); summary in
-[docs/tiers-and-packs.md](docs/tiers-and-packs.md).
+<img src="assets/screen-thermal.webp" alt="Thermal panel generator" width="100%">
 
-## Get started
+### Always included
+**Grid Sketch** (freehand contour editor + saved-shape library), primitive **Shapes**, and **SVG / DXF import** — on every edition, including Lite.
 
-1. Download for Windows 10 / 11 (x64) from
-   [foamsyncstudio.com/download](https://foamsyncstudio.com/download/).
-2. Install and launch. The first seven days run in trial mode: every
-   feature is previewed, output is for evaluation, real machines run
-   in virtual mode.
-3. Buy a licence via [@FoamSync_bot](https://t.me/FoamSync_bot) and
-   activate — online, or by loading a licence file from your
-   distributor.
+## Editions
 
-Step-by-step: [docs/installation.md](docs/installation.md) ·
-[docs/activation.md](docs/activation.md).
+| | **Lite** | **Pro** | **Studio** |
+|---|:---:|:---:|:---:|
+| CAM core · real machine · virtual simulation | ✓ | ✓ | ✓ |
+| SVG/DXF import · Grid Sketch · Shapes | ✓ | ✓ | ✓ |
+| Parametric generators | — | add packs | all included |
+| Machine seats | 1 | 1 | 3 |
+| Customer CRM · priority support | — | — | ✓ |
+
+**Pro** adds the **BUILD / AERO / THERMAL** packs à la carte — buy only the workflows you need. Each Lite and Pro licence can be monthly, annual, or a one-time perpetual key; Studio is subscription. Current pricing → **[foamsyncstudio.com](https://foamsyncstudio.com)**.
+
+## Try it
+
+Download the latest installer from [**Releases**](../../releases/latest) and run the **7-day trial** — a full feature preview in virtual (no-machine) mode, output watermarked, no payment required. Activate a licence to unlock real-machine output and remove the watermark.
+
+**Requirements:** Windows 10 / 11, 64-bit. See [installation](docs/installation.md) and [hardware & wiring](docs/hardware.md).
 
 ## Documentation
 
-- [Introduction](docs/introduction.md) — what FoamSync is and who
-  it is for.
-- [Virtual machine (Virtual GRBL)](docs/virtual-machine.md) — design,
-  dry-run, and verify a full job before connecting any hardware.
-- [Installation](docs/installation.md) — requirements, install,
-  first launch.
-- [Activation](docs/activation.md) — get a key, activate online or
-  offline.
-- [Tiers and packs](docs/tiers-and-packs.md) — feature matrix per
-  tier.
-- [Features](docs/features.md) — capability reference.
-- [Workflow](docs/workflow.md) — a typical production walkthrough.
-- [Supported hardware](docs/hardware.md) — controllers, firmware,
-  machine topology.
-- [Market context](docs/market-context.md) — where FoamSync sits.
-- [FAQ](docs/faq.md)
-- [Support](docs/support.md)
-
-The full operator manual lives at
-[foamsyncstudio.com/docs](https://foamsyncstudio.com/docs/).
+| | |
+|---|---|
+| [Introduction](docs/introduction.md) | [Features](docs/features.md) |
+| [Workflow](docs/workflow.md) | [Tiers & packs](docs/tiers-and-packs.md) |
+| [Virtual machine](docs/virtual-machine.md) | [Hardware & wiring](docs/hardware.md) |
+| [Installation](docs/installation.md) | [Activation](docs/activation.md) |
+| [FAQ](docs/faq.md) | [Support](docs/support.md) |
 
 ## Support
 
-- Bug reports and feature requests:
-  [GitHub Issues](https://github.com/Balcore-Systems/foamsync/issues)
-- Activation and billing:
-  [@FoamSync_bot](https://t.me/FoamSync_bot)
-- Email: <support@foamsyncstudio.com>
-
-## Licence
-
-FoamSync is proprietary, closed-source software. The source is not
-published. This repository hosts the public documentation and the
-issue tracker. See [LICENSE.md](LICENSE.md).
+Questions, licences, onboarding → **[foamsyncstudio.com](https://foamsyncstudio.com)** · or see [support](docs/support.md).
 
 ---
 
-© 2026 Balcore Systems · FoamSync™ · Frankfurt am Main, Germany.
+<div align="center">
+
+**© 2026 Balcore Systems** · Mörfelden-Walldorf, Germany · FoamSync™
+
+<sub>This repository hosts public documentation and signed release downloads. FoamSync is proprietary software — see [LICENSE](LICENSE.md).</sub>
+
+</div>
