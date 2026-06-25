@@ -93,7 +93,7 @@ Questions, licences, onboarding → **[foamsyncstudio.com](https://foamsyncstudi
 
 <div align="center">
 
-**© 2026 Balcore Systems** · Mörfelden-Walldorf, Germany · FoamSync™
+**2026 © Balcore Systems** · Frankfurt-am-Main, Germany · FoamSync™
 
 <sub>This repository hosts public documentation and signed release downloads. FoamSync is proprietary software — see [LICENSE](LICENSE.md).</sub>
 
